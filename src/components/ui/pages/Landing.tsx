@@ -36,7 +36,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-tl from-blue-950 via-black to-purple-950 flex flex-col relative overflow-hidden">
+    <div className="h-screen w-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex flex-col relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div
