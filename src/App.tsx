@@ -7,6 +7,7 @@ import Landing from "./components/ui/pages/Landing";
 import "./App.css";
 import Signup from "./components/ui/pages/Signup";
 import Signin from "./components/ui/pages/Signin";
+import AccountType from "./components/ui/pages/AccountType";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
+      <Route path="/account-type" element={<AccountType />} />
 
       {/* <Route path="/about" element={<About />} /> */}
       {/* <Route path="/features" element={<Features />} />
