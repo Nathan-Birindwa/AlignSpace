@@ -11,17 +11,19 @@ import AccountType from "./components/ui/pages/AccountType";
 import PlanType from "./components/ui/pages/PlanType";
 import CreateWorkspace from "./components/ui/pages/CreateWorkSpace";
 import InviteUsers from "./components/ui/pages/InviteUsersToWorkSpace";
+import Dashboard from "./components/ui/pages/Dashboard";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/account-type" element={<AccountType />} />
       <Route path="/choose-plan" element={<PlanType />} />
       <Route path="/create-work-space" element={<CreateWorkspace />} />
       <Route path="/invite-users" element={<InviteUsers />} />
+      <Route path="/" element={<Dashboard />} />
 
       {/* <Route path="/about" element={<About />} /> */}
       {/* <Route path="/features" element={<Features />} />
