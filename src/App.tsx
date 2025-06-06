@@ -10,6 +10,7 @@ import Signin from "./components/ui/pages/Signin";
 import AccountType from "./components/ui/pages/AccountType";
 import PlanType from "./components/ui/pages/PlanType";
 import CreateWorkspace from "./components/ui/pages/CreateWorkSpace";
+import InviteUsers from "./components/ui/pages/InviteUsersToWorkSpace";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/account-type" element={<AccountType />} />
       <Route path="/choose-plan" element={<PlanType />} />
       <Route path="/create-work-space" element={<CreateWorkspace />} />
+      <Route path="/invite-users" element={<InviteUsers />} />
 
       {/* <Route path="/about" element={<About />} /> */}
       {/* <Route path="/features" element={<Features />} />
