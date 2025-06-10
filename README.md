@@ -1,26 +1,50 @@
-✨ Client Portal for Freelancers & Agencies
-A modern, white-label client portal built for freelancers and agencies to manage projects professionally in one place.
+# Welcome to your Expo app 👋
 
-Features:
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-✅ Client & project management dashboard
+## Get started
 
-📁 Secure file sharing via Supabase
+1. Install dependencies
 
-💬 Project updates & messaging
+   ```bash
+   npm install
+   ```
 
-💸 Stripe-powered invoice uploads & payments
+2. Start the app
 
-🔐 Auth with Supabase (email/password, Google login)
+   ```bash
+   npx expo start
+   ```
 
-🌐 Public client view (share updates with a secure token link)
+In the output, you'll find options to open the app in a
 
-Tech Stack:
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-Next.js (App Router) + Tailwind CSS + shadcn/ui
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-Supabase (Auth, Database, File Storage)
+## Get a fresh project
 
-Stripe for payments
+When you're ready, run:
 
-Hosted on Vercel
+```bash
+npm run reset-project
+```
+
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Learn more
+
+To learn more about developing your project with Expo, look at the following resources:
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+
+## Join the community
+
+Join our community of developers creating universal apps.
+
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
