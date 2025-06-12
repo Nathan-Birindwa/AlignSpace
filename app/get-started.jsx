@@ -1,5 +1,7 @@
+import { router } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Colors } from "../constants/Colors";
 
 function getStarted() {
   return (
@@ -17,7 +19,14 @@ function getStarted() {
             <Text style={style.signInText}>Sign in</Text>
           </TouchableOpacity>
           <TouchableOpacity style={style.signUpButton}>
-            <Text style={style.signUpText}>Sign up</Text>
+            <Text
+              onPress={() => {
+                router.push("/signup");
+              }}
+              style={style.signUpText}
+            >
+              Sign up
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -51,7 +60,7 @@ const style = StyleSheet.create({
   },
   Header: {
     fontSize: 32,
-    color: "#4D3FBDFF",
+    color: Colors.SecondaryColor,
     fontWeight: "900",
     textAlign: "center",
     marginBottom: 40,
@@ -63,7 +72,7 @@ const style = StyleSheet.create({
   },
   signInButton: {
     flex: 1,
-    backgroundColor: "#4D3FBDFF",
+    backgroundColor: Colors.SecondaryColor,
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
@@ -90,12 +99,12 @@ const style = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 25,
     borderWidth: 2,
-    borderColor: "#4D3FBDFF",
+    borderColor: Colors.SecondaryColor,
     alignItems: "center",
     justifyContent: "center",
   },
   signUpText: {
-    color: "#4D3FBDFF",
+    color: Colors.SecondaryColor,
     fontSize: 18,
     fontWeight: "600",
   },
