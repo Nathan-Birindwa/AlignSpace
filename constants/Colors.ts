@@ -1,7 +1,7 @@
 export const Colors = {
   SecondaryColor: "#4D3FBDFF",
   Paragraph: "#666666",
-  Header: "#1a1a1a",
+  Header: "#0B0B0BFF",
   SecondaryBG: "#D1D5DB",
   PrimaryBG: "#FFFFFFFF",
   AccentColor: "4D3FBDFF",

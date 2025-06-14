@@ -19,6 +19,7 @@ const deviceHeight = Dimensions.get("screen").height;
 export default function Signup() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState(countries);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSearch = (text: string) => {
     setSearch(text);
@@ -31,8 +32,15 @@ export default function Signup() {
     setFilter(filteredData);
   };
 
+  function hideDropDown() {
+    setShowDropdown(false);
+  }
+  function showDropdownMenu() {
+    setShowDropdown(true);
+  }
+
   return (
-    <SafeAreaView style={styles.overlay}>
+    <SafeAreaView style={showDropdown ? styles.overlay : styles.container}>
       {/* Header Section */}
       <View style={styles.headerContainer}>
         <Text style={styles.mainHeader}>Create An Account</Text>
@@ -57,7 +65,10 @@ export default function Signup() {
       <View style={styles.formContainer}>
         <Text style={styles.inputLabel}>Phone Number</Text>
         <View style={styles.phoneInputContainer}>
-          <TouchableOpacity style={styles.countryCodeButton}>
+          <TouchableOpacity
+            onPress={showDropdownMenu}
+            style={styles.countryCodeButton}
+          >
             <Text style={styles.countryCodePlaceholder}>Select Country</Text>
             <Text style={styles.dropdownArrow}>▼</Text>
           </TouchableOpacity>
@@ -74,49 +85,101 @@ export default function Signup() {
       </View>
 
       {/* Country Code Dropdown Modal */}
-      <View style={styles.CountryCodeDropDown}>
-        <View style={styles.phoneSelectionContainer}>
-          <Text style={styles.phoneSelectionHeader}>Select Country</Text>
-          <TouchableOpacity style={styles.phoneSelectionCloseButton}>
-            <Text style={styles.phoneSelectionCloseButtonText}>✕</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Search Input */}
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search country by name"
-            placeholderTextColor={Colors.PlaceholderText}
-            keyboardType="default"
-            onChangeText={handleSearch}
-          />
-        </View>
-
-        {/* Countries List */}
-        <ScrollView
-          style={styles.countriesList}
-          showsVerticalScrollIndicator={true}
-          persistentScrollbar={true}
-          contentContainerStyle={styles.countriesListContent}
-        >
-          {filter.map((country, index) => (
+      {showDropdown ? (
+        <View style={styles.CountryCodeDropDown}>
+          <View style={styles.phoneSelectionContainer}>
+            <Text style={styles.phoneSelectionHeader}>Select Country</Text>
             <TouchableOpacity
-              key={index}
-              style={[
-                styles.countryItem,
-                index === filter.length - 1 && styles.lastCountryItem,
-              ]}
+              onPress={hideDropDown}
+              style={styles.phoneSelectionCloseButton}
             >
-              <View style={styles.countryItemContent}>
-                <Text style={styles.countryFlag}>{country.flag}</Text>
-                <Text style={styles.countryName}>{country.name}</Text>
-              </View>
-              <Text style={styles.countryCode}>({country.code})</Text>
+              <Text style={styles.phoneSelectionCloseButtonText}>✕</Text>
             </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
+          </View>
+
+          {/* Search Input */}
+          <View style={styles.searchContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search country by name"
+              placeholderTextColor={Colors.PlaceholderText}
+              keyboardType="default"
+              onChangeText={handleSearch}
+            />
+          </View>
+
+          {/* Countries List */}
+          <ScrollView
+            style={styles.countriesList}
+            showsVerticalScrollIndicator={true}
+            persistentScrollbar={true}
+            contentContainerStyle={styles.countriesListContent}
+          >
+            {filter.map((country, index) => (
+              <TouchableOpacity
+                key={index}
+                style={[
+                  styles.countryItem,
+                  index === filter.length - 1 && styles.lastCountryItem,
+                ]}
+              >
+                <View style={styles.countryItemContent}>
+                  <Text style={styles.countryFlag}>{country.flag}</Text>
+                  <Text style={styles.countryName}>{country.name}</Text>
+                </View>
+                <Text style={styles.countryCode}>({country.code})</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+      ) : (
+        <View style={{ display: "none" }}>
+          <View style={styles.phoneSelectionContainer}>
+            <Text style={styles.phoneSelectionHeader}>Select Country</Text>
+            <TouchableOpacity
+              onPress={hideDropDown}
+              style={styles.phoneSelectionCloseButton}
+            >
+              <Text style={styles.phoneSelectionCloseButtonText}>✕</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Search Input */}
+          <View style={styles.searchContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search country by name"
+              placeholderTextColor={Colors.PlaceholderText}
+              keyboardType="default"
+              onChangeText={handleSearch}
+            />
+          </View>
+
+          {/* Countries List */}
+          <ScrollView
+            style={styles.countriesList}
+            showsVerticalScrollIndicator={true}
+            persistentScrollbar={true}
+            contentContainerStyle={styles.countriesListContent}
+          >
+            {filter.map((country, index) => (
+              <TouchableOpacity
+                key={index}
+                style={[
+                  styles.countryItem,
+                  index === filter.length - 1 && styles.lastCountryItem,
+                ]}
+              >
+                <View style={styles.countryItemContent}>
+                  <Text style={styles.countryFlag}>{country.flag}</Text>
+                  <Text style={styles.countryName}>{country.name}</Text>
+                </View>
+                <Text style={styles.countryCode}>({country.code})</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+      )}
 
       {/* Divider */}
       <View style={styles.dividerContainer}>
@@ -328,25 +391,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.BorderColor,
     borderRadius: 12,
-    paddingVertical: 16,
-    paddingHorizontal: 8,
     backgroundColor: Colors.PrimaryBG,
-    minHeight: 80,
+    minHeight: 50,
   },
   socialButtonEmoji: {
-    fontSize: 24,
+    fontSize: 10,
     marginBottom: 8,
   },
   socialButtonText: {
     color: Colors.Header,
-    fontSize: 14,
+    fontSize: 10,
     fontWeight: "500",
   },
   actionContainer: {
     marginBottom: 30,
   },
   primaryButton: {
-    backgroundColor: Colors.AccentColor,
+    backgroundColor: Colors.SecondaryColor,
     borderRadius: 12,
     paddingVertical: 16,
     alignItems: "center",
@@ -409,12 +470,13 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   socialIcon: {
-    width: 45,
-    height: 45,
+    width: 30,
+    height: 30,
     marginBottom: 8,
   },
 
   // Country Code Dropdown Styles
+
   CountryCodeDropDown: {
     height: deviceHeight - 280,
     width: deviceWidth - 30,

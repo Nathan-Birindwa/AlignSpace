@@ -39,7 +39,7 @@ export default getStarted;
 const style = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#FFFFFFFF",
   },
   imageContainer: {
     flex: 2,
