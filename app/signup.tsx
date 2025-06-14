@@ -1,5 +1,9 @@
+import countries from "@/constants/Countries";
+import { useState } from "react";
 import {
+  Dimensions,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -9,9 +13,26 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../constants/Colors";
 
-export default function signup() {
+const deviceWidth = Dimensions.get("screen").width;
+const deviceHeight = Dimensions.get("screen").height;
+
+export default function Signup() {
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState(countries);
+
+  const handleSearch = (text: string) => {
+    setSearch(text);
+    const lower = text.trim().toLowerCase();
+    const filteredData = countries.filter(
+      (item) =>
+        item.name.toLowerCase().includes(lower) ||
+        item.code.toLowerCase().includes(lower)
+    );
+    setFilter(filteredData);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.overlay}>
       {/* Header Section */}
       <View style={styles.headerContainer}>
         <Text style={styles.mainHeader}>Create An Account</Text>
@@ -44,14 +65,58 @@ export default function signup() {
             style={styles.phoneNumberInput}
             placeholder="Enter phone number"
             placeholderTextColor={Colors.PlaceholderText}
-            keyboardType="phone-pad"
+            keyboardType="name-phone-pad"
           />
         </View>
         <Text style={styles.helperText}>
           We&apos;ll send you a verification code
         </Text>
       </View>
-      <View style={styles.CountryCodeDropDown}></View>
+
+      {/* Country Code Dropdown Modal */}
+      <View style={styles.CountryCodeDropDown}>
+        <View style={styles.phoneSelectionContainer}>
+          <Text style={styles.phoneSelectionHeader}>Select Country</Text>
+          <TouchableOpacity style={styles.phoneSelectionCloseButton}>
+            <Text style={styles.phoneSelectionCloseButtonText}>✕</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Search Input */}
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search country by name"
+            placeholderTextColor={Colors.PlaceholderText}
+            keyboardType="default"
+            onChangeText={handleSearch}
+          />
+        </View>
+
+        {/* Countries List */}
+        <ScrollView
+          style={styles.countriesList}
+          showsVerticalScrollIndicator={true}
+          persistentScrollbar={true}
+          contentContainerStyle={styles.countriesListContent}
+        >
+          {filter.map((country, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.countryItem,
+                index === filter.length - 1 && styles.lastCountryItem,
+              ]}
+            >
+              <View style={styles.countryItemContent}>
+                <Text style={styles.countryFlag}>{country.flag}</Text>
+                <Text style={styles.countryName}>{country.name}</Text>
+              </View>
+              <Text style={styles.countryCode}>({country.code})</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
 
       {/* Divider */}
       <View style={styles.dividerContainer}>
@@ -71,7 +136,7 @@ export default function signup() {
                 source={{
                   uri: "https://img.icons8.com/?size=100&id=17949&format=png&color=000000",
                 }}
-              ></Image>
+              />
             </Text>
           </TouchableOpacity>
 
@@ -82,7 +147,7 @@ export default function signup() {
                 source={{
                   uri: "https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000",
                 }}
-              ></Image>
+              />
             </Text>
           </TouchableOpacity>
         </View>
@@ -348,13 +413,107 @@ const styles = StyleSheet.create({
     height: 45,
     marginBottom: 8,
   },
+
+  // Country Code Dropdown Styles
   CountryCodeDropDown: {
-    height: 1000,
-    width: "100%",
+    height: deviceHeight - 280,
+    width: deviceWidth - 30,
     position: "absolute",
-    backgroundColor: "blue",
-    top: 360,
+    top: 150,
+    alignSelf: "center",
     zIndex: 50,
     borderRadius: 13,
+    backgroundColor: Colors.PrimaryBG,
+    borderWidth: 1,
+    borderColor: Colors.SecondaryBG,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: Colors.OverLay,
+    paddingHorizontal: 20,
+  },
+  phoneSelectionContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 15,
+    // borderBottomWidth: 1,
+    // borderBottomColor: Colors.BorderColor,
+  },
+  phoneSelectionHeader: {
+    fontSize: 24,
+    fontWeight: "900",
+    color: Colors.Header,
+  },
+  phoneSelectionCloseButton: {
+    padding: 4,
+  },
+  phoneSelectionCloseButtonText: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: Colors.Paragraph,
+  },
+
+  // Search Input Styles
+  searchContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderColor: Colors.BorderColor,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 16,
+    backgroundColor: Colors.InputBG,
+    color: Colors.Header,
+  },
+
+  // Countries List Styles
+  countriesList: {
+    flex: 1,
+    padding: 20,
+  },
+  countriesListContent: {
+    paddingBottom: 20,
+    overflow: "scroll",
+  },
+  countryItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.BorderColor,
+  },
+  lastCountryItem: {
+    borderBottomWidth: 0,
+  },
+  countryItemContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  countryFlag: {
+    fontSize: 20,
+    marginRight: 12,
+  },
+  countryName: {
+    fontSize: 16,
+    color: Colors.Header,
+    fontWeight: "400",
+    flex: 1,
+  },
+  countryCode: {
+    fontSize: 16,
+    color: Colors.Paragraph,
+    fontWeight: "400",
   },
 });
