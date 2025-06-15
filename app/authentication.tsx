@@ -1,4 +1,5 @@
 import countries from "@/constants/Countries";
+import { router } from "expo-router";
 import { useState } from "react";
 import {
   Dimensions,
@@ -43,14 +44,14 @@ export default function Signup() {
     <SafeAreaView style={showDropdown ? styles.overlay : styles.container}>
       {/* Header Section */}
       <View style={styles.headerContainer}>
-        <Text style={styles.mainHeader}>Create An Account</Text>
+        <Text style={styles.mainHeader}>Enter you account</Text>
         <Text style={styles.subHeader}>
           Enter your phone number, email, or Instagram to get started
         </Text>
       </View>
 
       {/* Navigation Tabs */}
-      <View style={styles.navigationWrapper}>
+      {/* <View style={styles.navigationWrapper}>
         <View style={styles.navigationContainer}>
           <TouchableOpacity style={styles.navigationButtonInactive}>
             <Text style={styles.navigationTextInactive}>Sign in</Text>
@@ -59,7 +60,7 @@ export default function Signup() {
             <Text style={styles.navigationTextActive}>Sign up</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
 
       {/* Phone Number Section */}
       <View style={styles.formContainer}>
@@ -218,7 +219,10 @@ export default function Signup() {
 
       {/* Action Buttons */}
       <View style={styles.actionContainer}>
-        <TouchableOpacity style={styles.primaryButton}>
+        <TouchableOpacity
+          onPress={() => router.push("/otp")}
+          style={styles.primaryButton}
+        >
           <Text style={styles.primaryButtonText}>Continue</Text>
         </TouchableOpacity>
       </View>
@@ -380,8 +384,8 @@ const styles = StyleSheet.create({
   },
   socialButtonsContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    gap: 12,
+    justifyContent: "space-around",
+    gap: 50,
   },
   socialButton: {
     flex: 1,
@@ -392,7 +396,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.BorderColor,
     borderRadius: 12,
     backgroundColor: Colors.PrimaryBG,
-    minHeight: 50,
+    minHeight: 60,
+    minWidth: 62,
   },
   socialButtonEmoji: {
     fontSize: 10,
