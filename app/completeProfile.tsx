@@ -73,15 +73,15 @@ export default function CompleteProfile() {
     );
   };
 
-  const handleSaveProfile = () => {
-    if (!profile.firstName || !profile.lastName || !profile.email) {
-      Alert.alert("Error", "Please fill in all required fields");
-      return;
-    }
+  // const handleSaveProfile = () => {
+  //   if (!profile.firstName || !profile.lastName || !profile.email) {
+  //     Alert.alert("Error", "Please fill in all required fields");
+  //     return;
+  //   }
 
-    console.log("Saving profile:", profile);
-    Alert.alert("Success", "Profile saved successfully!");
-  };
+  //   console.log("Saving profile:", profile);
+  //   Alert.alert("Success", "Profile saved successfully!");
+  // };
 
   const genderOptions = ["Male", "Female", "Other", "Prefer not to say"];
 
@@ -99,7 +99,11 @@ export default function CompleteProfile() {
           />
         </TouchableOpacity>
         <Text style={styles.title}>Complete Profile</Text>
-        <TouchableOpacity onPress={handleSaveProfile}>
+        <TouchableOpacity
+          onPress={() => {
+            router.push("/(tabs)");
+          }}
+        >
           <Text style={styles.saveButton}>Save</Text>
         </TouchableOpacity>
       </View>
@@ -286,7 +290,7 @@ export default function CompleteProfile() {
         {/* Complete Profile Button */}
         <TouchableOpacity
           style={styles.completeButton}
-          onPress={handleSaveProfile}
+          // onPress={}
         >
           <Text style={styles.completeButtonText}>Complete Profile</Text>
         </TouchableOpacity>

@@ -21,7 +21,7 @@ function getStarted() {
           <TouchableOpacity style={style.signUpButton}>
             <Text
               onPress={() => {
-                router.push("/signup");
+                router.push("/authentication");
               }}
               style={style.signUpText}
             >

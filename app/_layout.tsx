@@ -28,6 +28,9 @@ export default function RootLayout() {
         <Stack.Screen name="authentication" options={{ headerShown: false }} />
         <Stack.Screen name="completeProfile" options={{ headerShown: false }} />
         <Stack.Screen name="get-started" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
