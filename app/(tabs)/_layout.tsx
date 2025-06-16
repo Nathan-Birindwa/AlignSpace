@@ -7,10 +7,10 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.primary || "#007AFF",
-        tabBarInactiveTintColor: Colors.Paragraph || "#8E8E93",
+        tabBarActiveTintColor: Colors.PrimaryBG,
+        tabBarInactiveTintColor: Colors.Paragraph,
         tabBarStyle: styles.tabBar,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
         headerShown: false,
       }}
     >
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 12,
-    height: 100,
+    height: 70,
     paddingBottom: 25,
     paddingTop: 15,
     borderTopLeftRadius: 25,

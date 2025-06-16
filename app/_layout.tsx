@@ -10,6 +10,8 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
+// import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -17,20 +19,20 @@ export default function RootLayout() {
   });
 
   if (!loaded) {
-    // Async font loading only occurs in development.
     return null;
   }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="otp" options={{ headerShown: false }} />
         <Stack.Screen name="authentication" options={{ headerShown: false }} />
-        <Stack.Screen name="completeProfile" options={{ headerShown: false }} />
         <Stack.Screen name="get-started" options={{ headerShown: false }} />
+        <Stack.Screen name="otp" options={{ headerShown: false }} />
+        <Stack.Screen name="completeProfile" options={{ headerShown: false }} />
         <Stack.Screen name="index" options={{ headerShown: false }} />
-
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(modals)" options={{ headerShown: false }} />
+        <Stack.Screen name="comfirmRide" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
