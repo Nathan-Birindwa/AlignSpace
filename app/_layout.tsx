@@ -25,6 +25,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
+        <Stack.Screen name="comfirmRide" options={{ headerShown: false }} />
         <Stack.Screen name="authentication" options={{ headerShown: false }} />
         <Stack.Screen name="get-started" options={{ headerShown: false }} />
         <Stack.Screen name="otp" options={{ headerShown: false }} />
@@ -32,7 +33,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="(modals)" options={{ headerShown: false }} />
-        <Stack.Screen name="comfirmRide" options={{ headerShown: false }} />
+        <Stack.Screen name="inputLocation" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

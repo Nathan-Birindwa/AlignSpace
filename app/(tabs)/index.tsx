@@ -38,7 +38,7 @@ export default function UberApp() {
           <View style={styles.searchBar}>
             <Search size={25} color={Colors.PlaceholderText} />
             <TextInput
-              onFocus={() => router.push("/(modals)/inputLocation")}
+              onFocus={() => router.push("/inputLocation")}
               style={styles.searchInput}
               placeholder="Destination?"
               placeholderTextColor={Colors.PlaceholderText}
