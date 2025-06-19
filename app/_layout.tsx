@@ -25,7 +25,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="comfirmRide" options={{ headerShown: false }} />
+        <Stack.Screen name="mapView" options={{ headerShown: false }} />
         <Stack.Screen name="authentication" options={{ headerShown: false }} />
         <Stack.Screen name="get-started" options={{ headerShown: false }} />
         <Stack.Screen name="otp" options={{ headerShown: false }} />
