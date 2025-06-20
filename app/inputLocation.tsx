@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -10,30 +11,6 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-
-const Colors = {
-  SecondaryColor: "#1A365D",
-  Paragraph: "#4A5568",
-  Header: "#1A202C",
-  SecondaryBG: "#E2E8F0",
-  PrimaryBG: "#FFFFFF",
-  AccentColor: "#3182CE",
-  BorderColor: "#CBD5E0",
-  InputBG: "#F7FAFC",
-  PlaceholderText: "#A0AEC0",
-  OverLay: "rgba(0,0,0,0.6)",
-  Success: "#38A169",
-  Warning: "#D69E2E",
-  Error: "#E53E3E",
-  Info: "#3182CE",
-  LightGray: "#F7FAFC",
-  MediumGray: "#718096",
-  DarkGray: "#2D3748",
-  Purple: "#805AD5",
-  Teal: "#319795",
-  Orange: "#DD6B20",
-  Pink: "#D53F8C",
-};
 
 const PlanRideScreen = () => {
   const [pickupTime, setPickupTime] = useState("Pickup now");
@@ -146,7 +123,7 @@ const PlanRideScreen = () => {
           </View>
         </View>
         <TouchableOpacity
-          onPress={() => router.push("/comfirmRide")}
+          onPress={() => router.push("/map-screen")}
           style={styles.addButton}
         >
           <Icon name="add" size={24} color={Colors.Header} />

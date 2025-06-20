@@ -21,7 +21,8 @@
         "googleMaps": {
           "apiKey": "AIzaSyArPezsqIEIS0QreUEifG7IqCKcFD7O3bM"
         }
-      }
+      },
+      "package": "com.anonymous.AlignSpace"
     },
     "web": {
       "bundler": "metro",
@@ -43,6 +44,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "88275c25-1ccb-4ff2-b7c7-cf3312a4177e"
+      }
     }
   }
 }
