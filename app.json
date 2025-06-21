@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "AlignSpace",
-    "slug": "AlignSpace",
+    "name": "nile-nest",
+    "slug": "nile-nest-",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "alignspace",
+    "scheme": "nilenest",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -17,12 +17,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyArPezsqIEIS0QreUEifG7IqCKcFD7O3bM"
-        }
-      },
-      "package": "com.anonymous.AlignSpace"
+      "package": "com.nathan_birindwa.nilenest"
     },
     "web": {
       "bundler": "metro",
@@ -39,8 +34,7 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ],
-      "expo-maps"
+      ]
     ],
     "experiments": {
       "typedRoutes": true
@@ -48,8 +42,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "88275c25-1ccb-4ff2-b7c7-cf3312a4177e"
+        "projectId": "288361df-cd4d-4c7e-97f3-82ab857e693a"
       }
-    }
+    },
+    "owner": "nathan_birindwa"
   }
 }
